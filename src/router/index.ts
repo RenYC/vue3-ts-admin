@@ -14,9 +14,21 @@ const router = createRouter({
           component: () => import('@/views/home/index.vue')
         },
         {
+          path: '/seniorJS4',
+          name: 'seniorJS4',
+          // component: () => import('@/views/seniorJS4/index.vue'),
+          children: [
+            {
+              path: '/seniorJS4/base',
+              name: 'seniorJS4-base',
+              component: () => import('@/views/seniorJS4/base/index.vue')
+            }
+          ]
+        },
+        {
           path: '/onLineWord2',
           name: 'onLineWord2',
-          component: () => import('@/views/onLineWord2/index.vue')
+          component: () => import('@/views/screen/onLineWord2/index.vue')
         },
         {
           path: '/drag',
@@ -39,17 +51,17 @@ const router = createRouter({
     {
       path: '/screenBig',
       name: 'screenBig',
-      component: () => import('@/views/screenBig/index.vue')
+      component: () => import('@/views/screen/screenBig/index.vue')
     },
     {
       path: '/screenBig/screenBigSub',
       name: 'screenBigSub',
-      component: () => import('@/views/screenBigSub/index.vue')
+      component: () => import('@/views/screen/screenBigSub/index.vue')
     },
     {
       path: '/kpi/cross',
       name: 'kpiCross',
-      component: () => import('@/views/kpiCross/index.vue')
+      component: () => import('@/views/screen/kpiCross/index.vue')
     }
   ]
 })

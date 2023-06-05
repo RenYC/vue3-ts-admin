@@ -7,6 +7,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "moduleResolution": "node",
+    // "types": ["node"]
+    "types": ["element-plus/global"]
   }
 }
