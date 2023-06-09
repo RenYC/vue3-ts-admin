@@ -13,6 +13,15 @@
             <el-menu-item index="2-1">
               <router-link to="/seniorJS4/base">基础内容</router-link>
             </el-menu-item>
+            <el-menu-item index="2-2">
+              <router-link to="/seniorJS4/advanced">进阶操作</router-link>
+            </el-menu-item>
+            <el-menu-item index="2-3">
+              <router-link to="/seniorJS4/BOM和DOM">BOM和DOM</router-link>
+            </el-menu-item>
+            <el-menu-item index="2-4">
+              <router-link to="/seniorJS4/JavascriptAPI">JavascriptAPI</router-link>
+            </el-menu-item>
           </el-sub-menu>
 
           <el-sub-menu index="3">
@@ -85,6 +94,9 @@ function deltorage() {
   height: 100%;
   .el-container {
     height: 100%;
+    overflow: hidden;
+  }
+  .el-main {
     overflow: hidden;
   }
 }

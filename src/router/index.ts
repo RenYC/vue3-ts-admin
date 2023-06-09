@@ -22,6 +22,21 @@ const router = createRouter({
               path: '/seniorJS4/base',
               name: 'seniorJS4-base',
               component: () => import('@/views/seniorJS4/base/index.vue')
+            },
+            {
+              path: '/seniorJS4/advanced',
+              name: 'seniorJS4-advanced',
+              component: () => import('@/views/seniorJS4/进阶操作/index.vue')
+            },
+            {
+              path: '/seniorJS4/BOM和DOM',
+              name: 'seniorJS4-BOM和DOM',
+              component: () => import('@/views/seniorJS4/BOM和DOM/index.vue')
+            },
+            {
+              path: '/seniorJS4/JavascriptAPI',
+              name: 'seniorJS4-JavascriptAPI',
+              component: () => import('@/views/seniorJS4/JavascriptAPI/index.vue')
             }
           ]
         },
