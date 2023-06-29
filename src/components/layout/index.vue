@@ -52,6 +52,12 @@
           <el-menu-item index="6">
             <router-link to="/drag">拖拽</router-link>
           </el-menu-item>
+          <el-menu-item index="7">
+            <router-link to="/webrtc">webrtc</router-link>
+          </el-menu-item>
+          <el-menu-item index="8">
+            <router-link to="/demo">demo</router-link>
+          </el-menu-item>
         </el-menu>
       </el-aside>
       <el-container>

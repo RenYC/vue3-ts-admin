@@ -59,6 +59,16 @@ const router = createRouter({
           path: '/rich/quillEditor2',
           name: 'quillEditor2',
           component: () => import('@/views/rich/quillEditor/index2.vue')
+        },
+        {
+          path: '/webrtc',
+          name: 'webrtc',
+          component: () => import('@/views/webrtc/index.vue')
+        },
+        {
+          path: '/demo',
+          name: 'demo',
+          component: () => import('@/views/demo/index.vue')
         }
       ]
     },
