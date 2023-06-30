@@ -73,7 +73,24 @@
   resolved "https://registry.npmjs.org/@antv/x6-geometry/-/x6-geometry-2.0.5.tgz"
   integrity sha512-MId6riEQkxphBpVeTcL4ZNXL4lScyvDEPLyIafvWMcWNTGK0jgkK7N20XSzqt8ltJb0mGUso5s56mrk8ysHu2A==
 
-"@antv/x6@^2.11.1":
+"@antv/x6-plugin-dnd@^2.0.5":
+  version "2.0.5"
+  resolved "https://registry.npmjs.org/@antv/x6-plugin-dnd/-/x6-plugin-dnd-2.0.5.tgz"
+  integrity sha512-g8GGJS2XmM8C59juOBiFqaR/f8i8y8tqw9sJNwta7s1Phh3hwDd7o4kk36Kk5eTKkfZfnjEyWHMOqp/h+EDibQ==
+
+"@antv/x6-plugin-keyboard@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.npmjs.org/@antv/x6-plugin-keyboard/-/x6-plugin-keyboard-2.2.1.tgz"
+  integrity sha512-sqfN0h4txVO211uIeKBd3zQ/IN2zPzDThWNTEhRx7Lecg1fO7uRXWBbOA48j3EgpRFXVexdSzIEVJEx+IWUdYw==
+  dependencies:
+    mousetrap "^1.6.5"
+
+"@antv/x6-plugin-selection@^2.1.7":
+  version "2.1.7"
+  resolved "https://registry.npmjs.org/@antv/x6-plugin-selection/-/x6-plugin-selection-2.1.7.tgz"
+  integrity sha512-ODfYLNwKSaLgIYMYfMW4dYQ9KKFOVBEdH0BzvyG8mfRol+JtZuyrm4BRbAvMryQKHrSxs4JCYXTFd2F7ZTuxLQ==
+
+"@antv/x6@^2.11.1", "@antv/x6@^2.x":
   version "2.11.1"
   resolved "https://registry.npmjs.org/@antv/x6/-/x6-2.11.1.tgz"
   integrity sha512-DwyuT/zuTEhwsnKwCj67cadwLeEbB5jfdCxrkTnEm6pg0+vT3FinbF71IK7SHoY8d4HOHl+sJt7ikJfr61JqLw==
@@ -1772,6 +1789,11 @@ mockjs@^1.1.0:
   integrity sha512-eQsKcWzIaZzEZ07NuEyO4Nw65g0hdWAyurVol1IPl1gahRwY+svqzfgfey8U8dahLwG44d6/RwEzuK52rSa/JQ==
   dependencies:
     commander "*"
+
+mousetrap@^1.6.5:
+  version "1.6.5"
+  resolved "https://registry.npmjs.org/mousetrap/-/mousetrap-1.6.5.tgz"
+  integrity sha512-QNo4kEepaIBwiT8CDhP98umTetp+JNfQYBWvC1pc6/OAibuXtRcxZ58Qz8skvEHYvURne/7R8T5VoOI7rDsEUA==
 
 ms@2.1.2:
   version "2.1.2"

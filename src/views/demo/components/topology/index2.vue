@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <div id="container"></div>
+    <div id="container11"></div>
   </div>
 </template>
 
@@ -63,7 +63,7 @@ onMounted(() => {
   })
 
   const graph = new Graph({
-    container: document.getElementById('container'),
+    container: document.getElementById('container11'),
     grid: {
       visible: true,
       type: 'doubleMesh',

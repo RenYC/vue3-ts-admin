@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="container-wrap">
     <div id="container"></div>
   </div>
 </template>
@@ -130,4 +130,8 @@ onMounted(() => {
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container-wrap {
+  height: 100%;
+}
+</style>
