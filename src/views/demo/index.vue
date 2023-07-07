@@ -6,7 +6,9 @@
     <el-tab-pane label="拓扑-拖拽" name="2">
       <Topology2></Topology2>
     </el-tab-pane>
-    <el-tab-pane label="11" name="3"> 222 </el-tab-pane>
+    <el-tab-pane label="antd tree" name="3">
+      <antdTree></antdTree>
+    </el-tab-pane>
   </el-tabs>
 </template>
 
@@ -15,6 +17,7 @@ import { ref } from 'vue'
 import type { TabsPaneContext } from 'element-plus'
 import Topology from './components/topology/index.vue'
 import Topology2 from './components/topology2/index.vue'
+import antdTree from './components/antdTree/index.vue'
 
 const activeName = ref('2')
 

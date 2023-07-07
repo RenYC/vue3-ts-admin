@@ -20,6 +20,20 @@ let dnd = null
 onMounted(() => {
   graph = new Graph({
     container: document.getElementById('container2'),
+    embedding: {
+      enabled: true,
+      findParent({ node }) {
+        const bbox = node.getBBox()
+        return this.getNodes().filter((node) => {
+          const data = node.getData()
+          if (data && data.parent) {
+            const targetBBox = node.getBBox()
+            return bbox.isIntersectWithRect(targetBBox)
+          }
+          return false
+        })
+      }
+    },
     grid: {
       visible: true,
       type: 'doubleMesh',
@@ -41,17 +55,70 @@ onMounted(() => {
     .use(
       new Selection({
         enabled: true,
-        multiple: true,
+        multiple: false,
         rubberband: true,
         movable: true,
-        showNodeSelectionBox: true
+        showNodeSelectionBox: true,
+        content: ''
       })
     )
     .use(new Keyboard())
 
+  graph.setRubberbandModifiers(['ctrl'])
+
   dnd = new Dnd({
     target: graph,
     scaled: false
+  })
+  let time = null
+  graph.on('node:selected', (res) => {
+    // console.log(res)
+  })
+  graph.on('node:unselected', (res) => {
+    // console.log(res)
+  })
+  graph.on('selection:changed', (res) => {
+    console.log(res)
+    const box = document.querySelector('.x6-widget-selection-inner')
+
+    if (time) {
+      clearTimeout(time)
+    }
+    time = setTimeout(() => {
+      if (res.selected.length <= 1) {
+        return
+      }
+      const parent = graph.addNode({
+        x: box.offsetLeft,
+        y: box.offsetTop - 20,
+        width: box.offsetWidth,
+        height: box.offsetHeight + 20,
+        zIndex: 0,
+        label: 'Parent',
+        attrs: {
+          body: {
+            fill: '#fffbe6',
+            stroke: '#ffe7ba'
+          },
+          label: {
+            fontSize: 12,
+            refY: 15
+          }
+        },
+        data: {
+          parent: true
+        }
+      })
+      res.selected.forEach((item) => {
+        console.log(item)
+        parent.addChild(item)
+      })
+      graph.cleanSelection()
+      console.log(graph.toJSON())
+    }, 500)
+  })
+  graph.on('cell:contextmenu', ({ e, x, y, node, view, nodeView, cell }) => {
+    console.log(node)
   })
   const source = graph.addNode({
     x: 130,
