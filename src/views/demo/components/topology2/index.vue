@@ -1,5 +1,8 @@
 <template>
   <div class="container-wrap">
+    <div>
+      <button @click="onChangColor">更换字体颜色</button>
+    </div>
     <ul ref="elList" class="list">
       <li onMouseDown="startDrag">111</li>
     </ul>
@@ -8,7 +11,7 @@
 </template>
 
 <script setup>
-import { Graph } from '@antv/x6'
+import { Graph, Shape } from '@antv/x6'
 import { onMounted, ref } from 'vue'
 import { Dnd } from '@antv/x6-plugin-dnd'
 import { Selection } from '@antv/x6-plugin-selection'
@@ -43,7 +46,7 @@ onMounted(() => {
       ]
     },
     autoResize: true,
-    // panning: true,
+    panning: true,
     mousewheel: true,
     width: 1000,
     height: 600,
@@ -64,6 +67,27 @@ onMounted(() => {
     )
     .use(new Keyboard())
 
+  console.log(
+    Shape.Rect.config({
+      width: 100,
+      height: 40,
+      label: 'Hello',
+      attrs: {
+        body: {
+          stroke: '#8f8f8f',
+          strokeWidth: 1,
+          fill: '#fff',
+          rx: 6,
+          ry: 6
+        },
+        text: {
+          fill: '#f60',
+          fontSize: 18
+        }
+      }
+    })
+  )
+
   graph.setRubberbandModifiers(['ctrl'])
 
   dnd = new Dnd({
@@ -78,22 +102,43 @@ onMounted(() => {
     // console.log(res)
   })
   graph.on('selection:changed', (res) => {
-    console.log(res)
-    const box = document.querySelector('.x6-widget-selection-inner')
-
     if (time) {
       clearTimeout(time)
     }
     time = setTimeout(() => {
-      if (res.selected.length <= 1) {
+      const selected = res.selected.filter((item) => {
+        return !item._parent
+      })
+      if (selected.length < 2) {
         return
       }
+      let zIndex = -1
+      selected?.forEach((item) => {
+        if (zIndex >= item.zIndex) {
+          zIndex = item.zIndex - 1
+        }
+      })
+      const data = selected[0].store.data
+      let { x, y } = data.position
+      let maxW = data.size.width + data.position.x
+      let maxH = data.size.height + data.position.y
+      selected.forEach((item) => {
+        // 查找x轴左边定位点
+        x = Math.min(x, item.store.data.position.x)
+
+        // 查找上面Y轴定位点
+        y = Math.min(y, item.store.data.position.y)
+      })
+      selected.forEach((item) => {
+        maxW = Math.max(maxW, item.store.data.size.width + item.store.data.position.x)
+        maxH = Math.max(maxH, item.store.data.size.height + item.store.data.position.y)
+      })
       const parent = graph.addNode({
-        x: box.offsetLeft,
-        y: box.offsetTop - 20,
-        width: box.offsetWidth,
-        height: box.offsetHeight + 20,
-        zIndex: 0,
+        x: x - 20,
+        y: y - 40,
+        width: maxW - x + 40,
+        height: maxH - y + 60,
+        zIndex: zIndex,
         label: 'Parent',
         attrs: {
           body: {
@@ -109,8 +154,7 @@ onMounted(() => {
           parent: true
         }
       })
-      res.selected.forEach((item) => {
-        console.log(item)
+      selected.forEach((item) => {
         parent.addChild(item)
       })
       graph.cleanSelection()
@@ -133,6 +177,10 @@ onMounted(() => {
         fill: '#fff',
         rx: 6,
         ry: 6
+      },
+      text: {
+        fill: '#f60',
+        fontSize: 18
       }
     }
   })
@@ -154,8 +202,54 @@ onMounted(() => {
   })
 
   graph.addEdge({
-    source,
-    target,
+    source: {
+      cell: source,
+      anchor: {
+        name: 'bottom',
+        args: {
+          dx: 0
+        }
+      },
+      connectionPoint: 'anchor'
+    },
+    target: {
+      cell: target,
+      anchor: {
+        name: 'top',
+        args: {
+          dx: 0
+        }
+      },
+      connectionPoint: 'anchor'
+    },
+    attrs: {
+      line: {
+        stroke: '#8f8f8f',
+        strokeWidth: 1
+      }
+    }
+  })
+  graph.addEdge({
+    source: {
+      cell: target,
+      anchor: {
+        name: 'top',
+        args: {
+          dx: 0
+        }
+      },
+      connectionPoint: 'anchor'
+    },
+    target: {
+      cell: source,
+      anchor: {
+        name: 'bottom',
+        args: {
+          dx: 0
+        }
+      },
+      connectionPoint: 'anchor'
+    },
     attrs: {
       line: {
         stroke: '#8f8f8f',
@@ -194,6 +288,38 @@ function startDrag(e) {
     }
   })
   dnd.start(node, e)
+}
+
+function onChangColor() {
+  const cells = graph.getCells()
+  cells.forEach((item) => {
+    console.log(item)
+    // if (item.isNode()) {
+    //   console.log(item.store.data.size.height)
+    //   item.setAttrs({
+    //     body: {
+    //       refHeight: item.store.data.size.height
+    //     },
+    //     text: {
+    //       fill: 'red'
+    //     }
+    //   })
+    // }
+    if (item.isEdge()) {
+      item.setProp({
+        source: {
+          cell: item.getSourceCell(),
+          anchor: {
+            args: {
+              dx: 30
+            }
+          },
+          connectionPoint: 'anchor'
+        }
+      })
+      console.log(item)
+    }
+  })
 }
 </script>
 

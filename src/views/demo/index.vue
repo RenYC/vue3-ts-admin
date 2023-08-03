@@ -9,6 +9,9 @@
     <el-tab-pane label="antd tree" name="3">
       <antdTree></antdTree>
     </el-tab-pane>
+    <el-tab-pane label="前端导出excel" name="4">
+      <excelVue></excelVue>
+    </el-tab-pane>
   </el-tabs>
 </template>
 
@@ -18,6 +21,7 @@ import type { TabsPaneContext } from 'element-plus'
 import Topology from './components/topology/index.vue'
 import Topology2 from './components/topology2/index.vue'
 import antdTree from './components/antdTree/index.vue'
+import excelVue from './components/excel/index.vue'
 
 const activeName = ref('2')
 
