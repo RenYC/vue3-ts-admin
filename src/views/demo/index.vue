@@ -12,6 +12,12 @@
     <el-tab-pane label="前端导出excel" name="4">
       <excelVue></excelVue>
     </el-tab-pane>
+    <el-tab-pane label="虚拟长列表" name="5">
+      <bigData></bigData>
+    </el-tab-pane>
+    <el-tab-pane label="webGL" name="6">
+      <webGL></webGL>
+    </el-tab-pane>
   </el-tabs>
 </template>
 
@@ -22,8 +28,10 @@ import Topology from './components/topology/index.vue'
 import Topology2 from './components/topology2/index.vue'
 import antdTree from './components/antdTree/index.vue'
 import excelVue from './components/excel/index.vue'
+import bigData from './components/bigData/index.vue'
+import webGL from './components/webGL/index.vue'
 
-const activeName = ref('2')
+const activeName = ref('5')
 
 const handleClick = (tab: TabsPaneContext, event: Event) => {
   // console.log(tab, event)

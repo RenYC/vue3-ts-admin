@@ -1,5 +1,5 @@
 <template>
-  <el-tabs v-model="activeName" tab-position="left" class="demo-tabs" @tab-click="handleClick">
+  <el-tabs v-model="activeName" tab-position="top" class="demo-tabs" @tab-click="handleClick">
     <el-tab-pane label="1. 什么是JavaScript" name="1">
       <page1></page1>
     </el-tab-pane>

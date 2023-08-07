@@ -9,10 +9,12 @@ import 'view-ui-plus/dist/styles/viewuiplus.css'
 
 import App from './App.vue'
 import router from './router'
-import '@/utils/flexible.js' //屏幕自适应
+import '@/utils/flexible.ts' //屏幕自适应
+import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
+import VueVirtualScroller from 'vue-virtual-scroller'
 
 const app = createApp(App)
-
+app.use(VueVirtualScroller)
 app.use(createPinia())
 app.use(router)
 app.use(ElementPlus)

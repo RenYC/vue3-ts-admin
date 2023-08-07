@@ -9,6 +9,9 @@
     <el-tab-pane label="RTCPeerConnection" name="3">
       <RTCPeerConnection></RTCPeerConnection>
     </el-tab-pane>
+    <el-tab-pane label="demo1" name="demo1">
+      <demo1></demo1>
+    </el-tab-pane>
   </el-tabs>
 </template>
 
@@ -18,8 +21,9 @@ import type { TabsPaneContext } from 'element-plus'
 import RTCDataChannel from './components/RTCDataChannel/index.vue'
 import getUserMedia from './components/getUserMedia/index.vue'
 import RTCPeerConnection from './components/RTCPeerConnection/index.vue'
+import demo1 from './components/demo1/index.vue'
 
-const activeName = ref('1')
+const activeName = ref('demo1')
 
 const handleClick = (tab: TabsPaneContext, event: Event) => {
   // console.log(tab, event)

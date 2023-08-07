@@ -6,3 +6,7 @@ declare module '*.vue' {
 }
 
 // declare module 'element-plus'
+
+declare module 'vue-virtual-scroller'
+
+declare module 'mockjs'
