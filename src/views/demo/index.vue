@@ -18,6 +18,9 @@
     <el-tab-pane label="webGL" name="6">
       <webGL></webGL>
     </el-tab-pane>
+    <el-tab-pane label="前端导出word" name="7">
+      <exportWord></exportWord>
+    </el-tab-pane>
   </el-tabs>
 </template>
 
@@ -30,8 +33,9 @@ import antdTree from './components/antdTree/index.vue'
 import excelVue from './components/excel/index.vue'
 import bigData from './components/bigData/index.vue'
 import webGL from './components/webGL/index.vue'
+import exportWord from './components/exportWord/index.vue'
 
-const activeName = ref('5')
+const activeName = ref('7')
 
 const handleClick = (tab: TabsPaneContext, event: Event) => {
   // console.log(tab, event)

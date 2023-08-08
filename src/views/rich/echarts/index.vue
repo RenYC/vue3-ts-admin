@@ -1,18 +1,18 @@
 <template>
   <div class="container">
     <div>
-      <button @click="onClick">导出图片</button>
+      <!-- <button @click="onClick">导出图片</button> -->
     </div>
     <div class="echart-box">
-      <echarts ref="echart" style="visibility: hidden"></echarts>
-      <img :src="imgSrc" alt="" />
+      <echarts ref="echart" width="500" height="500"></echarts>
+      <!-- <img :src="imgSrc" alt="" /> -->
     </div>
   </div>
 </template>
 
 <script setup>
 import echarts from '@/components/echarts/index.vue'
-import { ref } from 'vue'
+import { ref, markRaw } from 'vue'
 const echart = ref(null)
 const imgSrc = ref('')
 
@@ -24,6 +24,7 @@ function onClick() {
     backgroundColor: '#fff'
   })
   // Export(echart.value.myChart)
+  return imgSrc.value
 }
 
 // 导出单个图表图片
@@ -35,6 +36,7 @@ function Export(el) {
     backgroundColor: '#fff'
   })
   console.log(img.src)
+  return img.src
   // img.onload = function () {
   //   var canvas = document.createElement('canvas')
   //   canvas.width = img.width
@@ -53,6 +55,10 @@ function Export(el) {
   //   a.remove()
   // }
 }
+
+defineExpose({
+  onClick
+})
 </script>
 
 <style lang="scss" scoped>

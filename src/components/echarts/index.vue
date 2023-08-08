@@ -4,9 +4,9 @@
 
 <script setup>
 import * as echarts from 'echarts'
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref, shallowRef } from 'vue'
 
-const myChart = ref(null)
+const myChart = shallowRef(null)
 
 onMounted(() => {
   // 基于准备好的dom，初始化echarts实例

@@ -10,3 +10,7 @@ declare module '*.vue' {
 declare module 'vue-virtual-scroller'
 
 declare module 'mockjs'
+
+declare module 'jszip-utils'
+declare module 'file-saver'
+declare module 'docxtemplater-image-module-free'
