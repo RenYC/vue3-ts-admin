@@ -24,6 +24,7 @@
     "element-plus": "^2.3.5",
     "eslint-config-standard": "^17.1.0",
     "file-saver": "^2.0.5",
+    "gridstack": "^9.0.1",
     "jszip-utils": "^0.1.0",
     "mockjs": "^1.1.0",
     "normalize.css": "^8.0.1",
