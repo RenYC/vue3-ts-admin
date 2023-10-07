@@ -1,6 +1,6 @@
 <template>
   <el-tabs v-model="activeName" tab-position="left" class="demo-tabs" @tab-click="handleClick">
-    <el-tab-pane label="拓扑" name="1">
+    <!-- <el-tab-pane label="拓扑" name="1">
       <Topology></Topology>
     </el-tab-pane>
     <el-tab-pane label="拓扑-拖拽" name="2">
@@ -20,6 +20,9 @@
     </el-tab-pane>
     <el-tab-pane label="前端导出word" name="7">
       <exportWord></exportWord>
+    </el-tab-pane> -->
+    <el-tab-pane label="spreadjs" name="8">
+      <spreadjs></spreadjs>
     </el-tab-pane>
   </el-tabs>
 </template>
@@ -34,8 +37,9 @@ import excelVue from './components/excel/index.vue'
 import bigData from './components/bigData/index.vue'
 import webGL from './components/webGL/index.vue'
 import exportWord from './components/exportWord/index.vue'
+import spreadjs from './components/spreadjs/index.vue'
 
-const activeName = ref('7')
+const activeName = ref('8')
 
 const handleClick = (tab: TabsPaneContext, event: Event) => {
   // console.log(tab, event)
